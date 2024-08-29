@@ -1,0 +1,902 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        .AvatarContestDetail_scroll-view__2LZ1s::-webkit-scrollbar-button:vertical:end:decrement,
+        .AvatarContestDetail_scroll-view__2LZ1s::-webkit-scrollbar-button:vertical:start:increment {
+            display: block;
+            height: 16px;
+        }
+
+        body:has(.SharingButton_dimmed___ouyS) {
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            touch-action: none;
+        }
+
+
+        :root {
+            --swiper-theme-color: #007aff;
+        }
+
+        :host {
+            position: relative;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 1;
+        }
+
+        :root {
+            --swiper-navigation-size: 44px;
+        }
+
+        body,
+        canvas,
+        div,
+        html,
+        img,
+        li,
+        ul {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            font-family: Pretendard, sans-serif;
+            background-color: #000;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            border: 4px solid transparent;
+            border-radius: 100px;
+            background: #c6ccd7;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: #9b9ea2;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding-inline: 0;
+            margin: 0;
+            border: none;
+            background: none;
+        }
+
+        button:disabled {
+            cursor: default;
+        }
+
+        img {
+            -webkit-user-drag: none;
+        }
+
+
+        .MakeAvater_container__F_UAU {
+            position: relative;
+            display: inline-block;
+            width: 1185px;
+            height: 766px;
+            padding: 107px 50px;
+            box-sizing: border-box;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/bg.png) no-repeat 50%/contain;
+        }
+
+
+
+        .MakeAvater_container__F_UAU::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .MakeAvater_container__F_UAU::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .MakeAvater_container__F_UAU::-webkit-scrollbar-thumb {
+            border: 4px solid transparent;
+            border-radius: 100px;
+            background: #c6ccd7;
+        }
+
+        .MakeAvater_container__F_UAU::-webkit-scrollbar-thumb:hover {
+            background: #9b9ea2;
+        }
+
+        .MakeAvater_make-avatar-container__eACTB {
+            display: flex;
+            box-sizing: border-box;
+        }
+
+
+
+        .MakeAvater_my-avatar-container__dZPsA {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 243px;
+        }
+
+
+
+
+        .MakeAvater_my-avatar__zt9Z_ {
+            width: 243px;
+            min-width: 243px;
+            max-width: 243px;
+            height: 338px;
+        }
+
+
+
+
+        .MakeAvater_my-avatar-canvas-container__4uCdE {
+            height: 100%;
+            padding: 48px 16px 16px;
+            box-sizing: border-box;
+        }
+
+        .MakeAvater_my-avatar-canvas-container__4uCdE canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .MakeAvater_my-avatar-canvas-wrapper__S30E3 {
+            position: relative;
+        }
+
+        .MakeAvater_my-avatar-take-off-all-wrapper__iK1gd {
+            display: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, .7);
+        }
+
+        .MakeAvater_my-avatar-take-off-all-button__zNvQg {
+            position: absolute;
+            width: 92px;
+            height: 42px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/remove-all.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_my-avatar-canvas__YbPzD {
+            width: 100%;
+            height: 100%;
+        }
+
+        .MakeAvater_my-avatar-controller__KAz7m {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+
+
+
+        .MakeAvater_my-avatar-undo__FRNXE {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/undo.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_my-avatar-undo__FRNXE:disabled {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/undo-disabled.png) no-repeat 50%/contain;
+        }
+
+
+
+        .MakeAvater_my-avatar-redo__NhX5z {
+            width: 40px;
+            height: 40px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/redo.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_my-avatar-redo__NhX5z:disabled {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/redo-disabled.png) no-repeat 50%/contain;
+        }
+
+
+
+
+        .MakeAvater_my-avatar-change-gender__jCjWR {
+            margin-top: 76px;
+            width: 135px;
+            height: 22px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/change-gender.png) no-repeat 50%/contain;
+        }
+
+
+
+
+        .MakeAvater_wearing-item-list-wrapper__rzNQc {
+            width: 252px;
+            min-width: 252px;
+            max-width: 252px;
+            height: 518px;
+            margin-left: 16px;
+            padding: 48px 16px 16px;
+            box-sizing: border-box;
+        }
+
+
+
+        .MakeAvater_wearing-item-list__Y1a48 {
+            padding: 16px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+
+
+        .MakeAvater_wearing-item-slot__SlFCx {
+            width: 88px;
+            height: 96px;
+            margin-bottom: 12px;
+            padding: 9px;
+            box-sizing: border-box;
+        }
+
+        .MakeAvater_wearing-item-slot__SlFCx:nth-child(2n) {
+            margin-left: 12px;
+        }
+
+
+
+
+        .MakeAvater_wearing-item-hair__4PVFA {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/hair.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_wearing-item-clothes__SPqke {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/clothes.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_wearing-item-eye__BLSjO {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/eye.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_wearing-item-ear__uKyfD {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/ear.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_wearing-item-mouth__kDZiO {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/mouth.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_wearing-item-bg__X73yr {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/bg.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_wearing-item-effect__cQMJb {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/effect.png) no-repeat 50%/contain;
+        }
+
+        .MakeAvater_wearing-item-wing__97mY8 {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/avatar-items/wing.png) no-repeat 50%/contain;
+        }
+
+
+
+        .MakeAvater_avatar-item-store__8micx {
+            width: 100%;
+            margin-top: 1px;
+            margin-left: 16px;
+            padding-bottom: 36px;
+        }
+
+
+
+
+
+
+        .MakeAvater_avatar-item-store-tabs__DIsf3 {
+            display: flex;
+            height: 60px;
+        }
+
+
+
+
+        .MakeAvater_store-tab__d1COc {
+            width: 88px;
+            height: 60px;
+            margin-right: 6px;
+            z-index: 10;
+        }
+
+        .MakeAvater_store-tab__d1COc:last-of-type {
+            margin-right: 0;
+        }
+
+
+
+
+        .MakeAvater_store-tab-avatar___puKS.MakeAvater_on__pI5s5 {
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/tab/tab-avatar-btn-hover.png) no-repeat 50%/contain;
+        }
+
+
+
+
+        .MakeAvater_store-tab-hair__J8iE4 {
+            height: 50px;
+        }
+
+
+
+        .MakeAvater_store-tab-clothes__PI72y {
+            height: 50px;
+        }
+
+
+
+        .MakeAvater_store-tab-face__XoAYC {
+            height: 50px;
+        }
+
+
+
+
+        .MakeAvater_store-tab-bg__3UPRv {
+            height: 50px;
+        }
+
+
+
+
+        .MakeAvater_show-window-list-wrapper__zoK7w {
+            position: relative;
+            height: 100%;
+            padding-top: 16px;
+        }
+
+        .MakeAvater_show-window-list-wrapper__zoK7w:before {
+            content: "";
+            display: block;
+            width: calc(100% - 14px);
+            height: 13px;
+            flex-shrink: 0;
+            background: linear-gradient(180deg, #282a79 70%, rgba(40, 42, 121, 0));
+            position: absolute;
+            top: 6px;
+            z-index: 10;
+        }
+
+
+
+        .MakeAvater_show-window-list__Y4KKI {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+
+
+
+        .MakeAvater_avatar-item-store-show-window__FqrmU {
+            position: relative;
+            width: 100%;
+            height: 454px;
+            padding: 4px 17px 15px 16px;
+            box-sizing: border-box;
+        }
+
+
+
+        .MakeAvater_avatar-item-store-show-window-container__1j4Eq {
+            padding: 0 8px 0 16px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+
+
+
+        .MakeAvater_show-window-avatar-list__w_FIm {
+            overflow: hidden scroll;
+            height: calc(100% - 16px);
+        }
+
+        .MakeAvater_show-window-avatar-list__w_FIm::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .MakeAvater_show-window-avatar-list__w_FIm::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .MakeAvater_show-window-avatar-list__w_FIm::-webkit-scrollbar-thumb {
+            border: 4px solid transparent;
+            border-radius: 100px;
+            background: #c6ccd7;
+        }
+
+        .MakeAvater_show-window-avatar-list__w_FIm::-webkit-scrollbar-thumb:hover {
+            background: #9b9ea2;
+        }
+
+
+
+
+        .MakeAvater_show-window-avatar-inventory__ntek9 {
+            position: relative;
+            width: 113px;
+            height: 123px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/store/avatar-inventory.png) no-repeat 50%/contain;
+            margin-right: 12px;
+            margin-bottom: 12px;
+            padding: 8px;
+            display: flex;
+            align-items: flex-end;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .MakeAvater_show-window-avatar-inventory__ntek9:nth-child(4n) {
+            margin-right: 0;
+        }
+
+
+
+        .MakeAvater_wearing-avatar-inventory__Gt_1q:before {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            content: "";
+            display: inline-block;
+            width: 97px;
+            height: 107px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/wearing-item.png) no-repeat 50%/contain;
+        }
+
+
+
+        .MakeAvater_avatar-inventory-image__rxkbY {
+            width: 100%;
+            height: 70px;
+            object-fit: none;
+        }
+
+        .MakeAvater_show-window-avatar__PdRLo {
+            height: 100%;
+        }
+
+        .MakeAvater_create-button__XVLe8 {
+            position: absolute;
+            width: 387px;
+            height: 72.9px;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 24px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/btn-create.png) no-repeat 50%/contain;
+            text-indent: -9999px;
+        }
+
+
+
+        .MakeAvater_create-button__XVLe8:hover {
+            background-image: url(https://enter.nexon.com/30th/avatar/maker/c.make-avatar/pc/btn-create-hover.png);
+        }
+
+
+
+        .MakeAvater_css-preloader__gpIVD {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .Result_scroll-view__GgexL::-webkit-scrollbar-button:vertical:end:decrement,
+        .Result_scroll-view__GgexL::-webkit-scrollbar-button:vertical:start:increment {
+            display: block;
+            height: 16px;
+        }
+
+
+
+        .Header_prev-button__NQVm3 {
+            position: absolute;
+            top: 19px;
+            left: 32px;
+            width: 56px;
+            height: 56px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/btn-prev.png) no-repeat 50%/contain;
+            text-indent: -9999px;
+        }
+
+
+
+
+        .Header_sound-button__QBt84 {
+            position: absolute;
+            top: 19px;
+            right: 100px;
+            width: 56px;
+            height: 56px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/btn-sound.png) no-repeat 50%/contain;
+            text-indent: -9999px;
+        }
+
+
+
+        .Header_close-button__HeufL {
+            position: absolute;
+            top: 19px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
+            background: url(https://enter.nexon.com/30th/avatar/maker/btn-close.png) no-repeat 50%/contain;
+            text-indent: -9999px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="MakeAvater_container__F_UAU">
+        <div class="MakeAvater_make-avatar-container__eACTB">
+            <div class="Header_container__MuGZZ"><button data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Prev"
+                    data-a2s-option-pagecode="65478" class="Header_prev-button__NQVm3">prev</button><button
+                    data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Music" data-a2s-option-type="Off"
+                    data-a2s-option-pagecode="65478" class="Header_sound-button__QBt84">sound</button><button
+                    data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Close" data-a2s-option-pagecode="65478"
+                    class="Header_close-button__HeufL">close</button></div>
+            <div class="MakeAvater_my-avatar-container__dZPsA">
+                <div class="MakeAvater_my-avatar-wrapper__YhXOJ">
+                    <div class="MakeAvater_my-avatar__zt9Z_">
+                        <div class="MakeAvater_my-avatar-canvas-container__4uCdE">
+                            <div class="MakeAvater_my-avatar-canvas-wrapper__S30E3">
+                                <div class="MakeAvater_my-avatar-canvas__YbPzD"><canvas width="154"
+                                        height="200"></canvas></div>
+                                <div class="MakeAvater_my-avatar-take-off-all-wrapper__iK1gd"><button
+                                        data-a2s-web-obj="Avatar_Create" data-a2s-option-name="All_Off"
+                                        data-a2s-option-pagecode="65478"
+                                        class="MakeAvater_my-avatar-take-off-all-button__zNvQg"></button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="MakeAvater_my-avatar-controller__KAz7m"><button data-a2s-web-obj="Avatar_Create"
+                            data-a2s-option-name="Undo" data-a2s-option-pagecode="65478"
+                            class="MakeAvater_my-avatar-undo__FRNXE" disabled=""></button><button
+                            data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Redo"
+                            data-a2s-option-pagecode="65478" class="MakeAvater_my-avatar-redo__NhX5z"></button></div>
+                </div><button data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Gender_Again"
+                    data-a2s-option-pagecode="65478" class="MakeAvater_my-avatar-change-gender__jCjWR"></button>
+                <div class="MakeAvater_my-avatar-change-notice__Q5DQb"></div>
+            </div>
+            <div class="MakeAvater_wearing-item-list-wrapper__rzNQc">
+                <ul class="MakeAvater_wearing-item-list__Y1a48">
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-hair__4PVFA"></li>
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-clothes__SPqke"></li>
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-eye__BLSjO"></li>
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-ear__uKyfD"></li>
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-mouth__kDZiO"></li>
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-bg__X73yr"></li>
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-effect__cQMJb"></li>
+                    <li class="MakeAvater_wearing-item-slot__SlFCx MakeAvater_wearing-item-wing__97mY8"></li>
+                </ul>
+            </div><button data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Avatar_Creation"
+                data-a2s-option-pagecode="65478" class="MakeAvater_create-button__XVLe8">아바타 생성하기</button>
+            <div class="MakeAvater_avatar-item-store__8micx MakeAvater_on__pI5s5">
+                <div class="MakeAvater_avatar-item-store-tabs__DIsf3"><button data-a2s-web-obj="Avatar_Create"
+                        data-a2s-option-name="Tab" data-a2s-option-value="아바타" data-a2s-option-pagecode="65478"
+                        class="MakeAvater_store-tab__d1COc MakeAvater_store-tab-avatar___puKS MakeAvater_on__pI5s5"></button><button
+                        data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Tab" data-a2s-option-value="헤어"
+                        data-a2s-option-pagecode="65478"
+                        class="MakeAvater_store-tab__d1COc MakeAvater_store-tab-hair__J8iE4"></button><button
+                        data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Tab" data-a2s-option-value="의상"
+                        data-a2s-option-pagecode="65478"
+                        class="MakeAvater_store-tab__d1COc MakeAvater_store-tab-clothes__PI72y"></button><button
+                        data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Tab" data-a2s-option-value="얼굴"
+                        data-a2s-option-pagecode="65478"
+                        class="MakeAvater_store-tab__d1COc MakeAvater_store-tab-face__XoAYC"></button><button
+                        data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Tab" data-a2s-option-value="배경"
+                        data-a2s-option-pagecode="65478"
+                        class="MakeAvater_store-tab__d1COc MakeAvater_store-tab-bg__3UPRv"></button><button
+                        data-a2s-web-obj="Avatar_Create" data-a2s-option-name="Tab" data-a2s-option-value="소품"
+                        data-a2s-option-pagecode="65478"
+                        class="MakeAvater_store-tab__d1COc MakeAvater_store-tab-accessory__oEeDs"></button></div>
+                <div class="MakeAvater_avatar-item-store-show-window__FqrmU">
+                    <div class="MakeAvater_avatar-item-store-show-window-container__1j4Eq">
+                        <div class="MakeAvater_show-window-avatar__PdRLo">
+                            <div class="MakeAvater_show-window-list-wrapper__zoK7w">
+                                <ul
+                                    class="MakeAvater_show-window-list__Y4KKI MakeAvater_show-window-avatar-list__w_FIm">
+                                    <li
+                                        class="MakeAvater_show-window-avatar-inventory__ntek9">
+                                        <img alt="아바타 이미지" loading="lazy" width="97" height="70" decoding="async"
+                                            data-nimg="1" class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_01_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_02_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_03_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_04_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_05_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_06_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_07_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_08_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_09_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_10_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_11_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_12_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_13_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_14_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_15_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_16_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_17_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(male)_18_cmodelm.png" style="color: transparent;"></li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_01_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_02_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_03_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_04_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_05_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_06_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_07_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_08_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_09_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_10_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_11_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_12_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_13_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_14_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_15_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_16_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_17_cmodelf.png" style="color: transparent;">
+                                    </li>
+                                    <li class="MakeAvater_show-window-avatar-inventory__ntek9"><img alt="아바타 이미지"
+                                            loading="lazy" width="97" height="70" decoding="async" data-nimg="1"
+                                            class="MakeAvater_avatar-inventory-image__rxkbY"
+                                            src="./index_files/(female)_18_cmodelf.png" style="color: transparent;">
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="MakeAvater_close-store-window-button-dimmed__RkI4H"><button
+                            class="MakeAvater_close-store-window-button__hK4lo"></button></div>
+                </div>
+            </div>
+        </div>
+        <div class="MakeAvater_css-preloader__gpIVD"></div>
+    </div>
+
+
+    <script>
+// Get the list of avatar images
+const avatarList = document.querySelectorAll('.MakeAvater_show-window-list__Y4KKI li');
+
+// Find the initially worn avatar
+let currentlyWornAvatar = Array.from(avatarList).find((avatar) => avatar.classList.contains('MakeAvater_wearing-avatar-inventory__Gt_1q'));
+
+// Add an event listener to each avatar image
+avatarList.forEach((avatar) => {
+  avatar.addEventListener('click', (event) => {
+    // Get the target avatar element
+    const targetAvatar = event.target.closest('.MakeAvater_show-window-list__Y4KKI li');
+
+    // Toggle the wearing class
+    if (currentlyWornAvatar && currentlyWornAvatar !== targetAvatar) {
+      currentlyWornAvatar.classList.remove('MakeAvater_wearing-avatar-inventory__Gt_1q');
+    }
+    targetAvatar.classList.add('MakeAvater_wearing-avatar-inventory__Gt_1q');
+
+    // Update the currently worn avatar
+    currentlyWornAvatar = targetAvatar;
+
+    // Get the canvas element
+    const canvas = document.querySelector('.MakeAvater_my-avatar-canvas__YbPzD canvas');
+
+    // Get the context of the canvas
+    const ctx = canvas.getContext('2d');
+
+    // Image smoothing
+    ctx.imageSmoothingEnabled = false;
+
+    // Draw the background images and avatar image
+    drawAvatar(targetAvatar, ctx);
+  });
+});
+
+// Function to draw the avatar image and background images
+function drawAvatar(targetAvatar, ctx) {
+  const canvas = ctx.canvas;
+
+  // Draw the first background image
+  const backgroundImage = new Image();
+  backgroundImage.src = '/c.make-avatar/defaultBg.png';
+  backgroundImage.onload = function() {
+    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+    // Draw the second background image
+    const backgroundImage2 = new Image();
+    backgroundImage2.src = '/c.make-avatar/defaultBgDesk.png';
+    backgroundImage2.onload = function() {
+      ctx.drawImage(backgroundImage2, 0, 0, canvas.width, canvas.height);
+
+      // Draw the avatar image
+      const selectedAvatarImage = targetAvatar.querySelector('img');
+      ctx.drawImage(selectedAvatarImage, 0, 0, canvas.width, canvas.height);
+      saveCanvasToLocalStorage()
+    }
+  }
+}
+function saveCanvasToLocalStorage() {
+  const canvas = document.getElementById('myCanvas');
+  localStorage.setItem('savedCanvas', canvas.toDataURL());
+}
+
+function loadSavedCanvasFromLocalStorage() {
+  const canvas = document.getElementById('myCanvas');
+  const savedCanvas = localStorage.getItem('savedCanvas');
+
+  if (savedCanvas) {
+    const img = new Image();
+    img.src = savedCanvas;
+    img.onload = () => {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+  }
+}
+    </script>
+</body>
+
+</html>
